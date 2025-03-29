@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=375px, initial-scale=1.0">
+<title>Beatlab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#6366F1',
+secondary: '#4F46E5'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body { width: 375px; margin: 0 auto; min-height: 100vh; background: #fff; }
+.waveform { background: linear-gradient(180deg, rgba(99, 102, 241, 0.2) 0%, rgba(99, 102, 241, 0.1) 100%); }
+.audio-player::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 16px; height: 16px; background: #6366F1; border-radius: 50%; cursor: pointer; }
+.audio-player::-webkit-slider-runnable-track { height: 4px; background: #E5E7EB; border-radius: 2px; }
+</style>
+</head>
+<body class="relative">
+<nav class="fixed top-0 w-full bg-white z-50 border-b">
+<div class="flex items-center justify-between px-4 h-14">
+<div class="font-['Pacifico'] text-2xl text-primary">Beatlab</div>
+<div class="flex items-center gap-4">
+<button class="w-8 h-8 flex items-center justify-center" id="search-btn">
+<i class="ri-search-line text-xl"></i>
+</button>
+<button class="w-8 h-8 flex items-center justify-center relative">
+<i class="ri-shopping-cart-line text-xl"></i>
+<a href="https://readdy.ai/home/907a68c6-1292-4651-8257-9f3af6a8d4fa/cd99f7bd-2278-4e16-a776-02c55b86540f" data-readdy="true">
+<span class="absolute -top-1 -right-1 bg-primary text-white text-xs w-4 h-4 rounded-full flex items-center justify-center">2</span>
+</a>
+</button>
+<button class="w-8 h-8 flex items-center justify-center" id="profile-btn">
+<i class="ri-user-line text-xl"></i>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-14 pb-16">
+<div class="p-4">
+<div class="relative mb-4">
+<img src="https://public.readdy.ai/ai/img_res/19c5fab0d3d91c3e2b8fd4fa2c645c1a.jpg" class="w-full h-[200px] object-cover rounded-lg" alt="Banner">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-lg flex items-end p-4">
+<div class="text-white">
+<h1 class="text-2xl font-bold mb-1">Featured Beats</h1>
+<p class="text-sm opacity-90">Find your next hit track</p>
+</div>
+</div>
+</div>
+<div class="flex gap-2 mb-6 overflow-x-auto">
+<button class="px-4 py-2 bg-primary text-white rounded-full text-sm whitespace-nowrap">All</button>
+<button class="px-4 py-2 bg-gray-100 rounded-full text-sm whitespace-nowrap">Hip Hop</button>
+<button class="px-4 py-2 bg-gray-100 rounded-full text-sm whitespace-nowrap">R&B</button>
+<button class="px-4 py-2 bg-gray-100 rounded-full text-sm whitespace-nowrap">Trap</button>
+<button class="px-4 py-2 bg-gray-100 rounded-full text-sm whitespace-nowrap">Pop</button>
+</div>
+<div class="grid gap-4">
+<div class="bg-white rounded-lg shadow-sm border p-3">
+<div class="flex items-center gap-3 mb-3">
+<img src="https://public.readdy.ai/ai/img_res/92be1f75de017451068576fb7e9c7c78.jpg" class="w-10 h-10 rounded-full object-cover" alt="Producer">
+<div>
+<h3 class="font-medium">MeloProducedIt</h3>
+<p class="text-xs text-gray-500">Producer</p>
+</div>
+</div>
+<div class="waveform h-24 rounded mb-3 relative">
+<button class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow flex items-center justify-center">
+<i class="ri-play-fill text-primary text-xl"></i>
+</button>
+</div>
+<div class="flex items-center justify-between mb-2">
+<h4 class="font-medium">Midnight Dreams</h4>
+<span class="text-primary font-medium">R 549.99</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-gray-500 mb-3">
+<span>140 BPM</span>
+<span>•</span>
+<span>03:24</span>
+<span>•</span>
+<span>WAV</span>
+</div>
+<input type="range" class="audio-player w-full mb-3" min="0" max="100" value="0">
+<button class="w-full bg-primary text-white py-2 rounded-button font-medium mb-3">Add to Cart</button>
+<div class="flex gap-2">
+<button class="flex-1 bg-gray-100 py-2 rounded-button font-medium text-sm flex items-center justify-center">
+<i class="ri-bank-card-line mr-1"></i>
+Card
+</button>
+<button class="flex-1 bg-gray-100 py-2 rounded-button font-medium text-sm flex items-center justify-center">
+<i class="ri-bank-line mr-1"></i>
+EFT
+</button>
+</div>
+</div>
+<div class="bg-white rounded-lg shadow-sm border p-3">
+<div class="flex items-center gap-3 mb-3">
+<img src="https://public.readdy.ai/ai/img_res/28c60c0c3a22b7ad690d2ff2b5a21be1.jpg" class="w-10 h-10 rounded-full object-cover" alt="Producer">
+<div>
+<h3 class="font-medium">Sarah Williams</h3>
+<p class="text-xs text-gray-500">Producer</p>
+</div>
+</div>
+<div class="waveform h-24 rounded mb-3 relative">
+<button class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow flex items-center justify-center">
+<i class="ri-play-fill text-primary text-xl"></i>
+</button>
+</div>
+<div class="flex items-center justify-between mb-2">
+<h4 class="font-medium">Urban Sunset</h4>
+<span class="text-primary font-medium">R 649.99</span>
+</div>
+<div class="flex items-center gap-2 text-xs text-gray-500 mb-3">
+<span>128 BPM</span>
+<span>•</span>
+<span>02:58</span>
+<span>•</span>
+<span>WAV</span>
+</div>
+<input type="range" class="audio-player w-full mb-3" min="0" max="100" value="0">
+<button class="w-full bg-primary text-white py-2 rounded-button font-medium mb-3">Add to Cart</button>
+<div class="flex gap-2">
+<button class="flex-1 bg-gray-100 py-2 rounded-button font-medium text-sm flex items-center justify-center">
+<i class="ri-bank-card-line mr-1"></i>
+Card
+</button>
+<button class="flex-1 bg-gray-100 py-2 rounded-button font-medium text-sm flex items-center justify-center">
+<i class="ri-bank-line mr-1"></i>
+EFT
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed bottom-0 w-full bg-white border-t">
+<div class="grid grid-cols-4 h-16">
+<button class="flex flex-col items-center justify-center gap-1">
+<i class="ri-home-5-line text-primary"></i>
+<span class="text-xs">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1">
+<i class="ri-search-line text-gray-400"></i>
+<span class="text-xs text-gray-400">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1">
+<i class="ri-upload-line text-gray-400"></i>
+<span class="text-xs text-gray-400">Upload</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1">
+<i class="ri-user-line text-gray-400"></i>
+<span class="text-xs text-gray-400">Profile</span>
+</button>
+</div>
+</div>
+<script>
+// Mock data for South African banks
+const sabanks = [
+{ id: 1, name: "ABSA Bank", code: "632005" },
+{ id: 2, name: "Capitec Bank", code: "470010" },
+{ id: 3, name: "FNB", code: "250655" },
+{ id: 4, name: "Nedbank", code: "198765" },
+{ id: 5, name: "Standard Bank", code: "051001" },
+{ id: 6, name: "Investec", code: "580105" },
+{ id: 7, name: "African Bank", code: "430000" },
+{ id: 8, name: "Bidvest Bank", code: "462005" },
+{ id: 9, name: "Discovery Bank", code: "679000" },
+{ id: 10, name: "TymeBank", code: "678910" }
+];
+// Subscription fee
+const subscriptionFee = "50 Rands";
+document.querySelectorAll('.waveform button').forEach(button => {
+button.addEventListener('click', function() {
+const icon = this.querySelector('i');
+if(icon.classList.contains('ri-play-fill')) {
+icon.classList.remove('ri-play-fill');
+icon.classList.add('ri-pause-fill');
+} else {
+icon.classList.remove('ri-pause-fill');
+icon.classList.add('ri-play-fill');
+}
+});
+});
+// Add event listeners for EFT buttons
+document.querySelectorAll('button:has(.ri-bank-line)').forEach(button => {
+button.addEventListener('click', function() {
+showBankingModal();
+});
+});
+// Add event listener for profile button
+document.getElementById('profile-btn').addEventListener('click', function() {
+showLoginModal();
+});
+// Add event listener for search button
+document.getElementById('search-btn').addEventListener('click', function() {
+showSearchModal();
+});
+function showLoginModal() {
+// Remove existing modal if any
+const existingModal = document.getElementById('login-modal');
+if (existingModal) {
+existingModal.remove();
+}
+// Create modal
+const modal = document.createElement('div');
+modal.id = 'login-modal';
+modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50';
+const modalContent = document.createElement('div');
+modalContent.className = 'bg-white rounded-lg w-[340px]';
+modalContent.innerHTML = `
+<div class="p-4 border-b">
+<div class="flex items-center justify-between">
+<h3 class="font-medium text-lg">Sign In</h3>
+<button id="close-login-modal" class="w-8 h-8 flex items-center justify-center">
+<i class="ri-close-line text-xl"></i>
+</button>
+</div>
+</div>
+<div class="p-4">
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+<input type="email" class="w-full p-2 border rounded-button" placeholder="Enter your email">
+</div>
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+<input type="password" class="w-full p-2 border rounded-button" placeholder="Enter your password">
+</div>
+<div class="bg-gray-50 p-3 rounded-lg mb-4">
+<div class="flex items-center">
+<i class="ri-information-line text-primary mr-2"></i>
+<p class="text-sm">Monthly subscription fee: <span class="font-medium">${subscriptionFee}</span></p>
+</div>
+<div class="flex items-center mt-1">
+<i class="ri-gift-line text-green-500 mr-2"></i>
+<p class="text-sm font-medium text-green-500">7-day free trial for new users!</p>
+</div>
+<div class="mt-2 text-xs text-gray-600">
+<p>Payment will be processed after trial period to:</p>
+<p class="mt-1">Bank: Capitec Bank</p>
+<p>Account Number: 2242384011</p>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button font-medium mb-3">Sign In & Start Free Trial</button>
+<p class="text-center text-sm text-gray-500">Don't have an account? <a href="#" class="text-primary">Sign Up</a></p>
+</div>
+`;
+modal.appendChild(modalContent);
+document.body.appendChild(modal);
+// Add event listener to close button
+document.getElementById('close-login-modal').addEventListener('click', function() {
+modal.remove();
+});
+// Close modal when clicking outside
+modal.addEventListener('click', function(e) {
+if (e.target === modal) {
+modal.remove();
+}
+});
+}
+function showSearchModal() {
+// Remove existing modal if any
+const existingModal = document.getElementById('search-modal');
+if (existingModal) {
+existingModal.remove();
+}
+// Create modal
+const modal = document.createElement('div');
+modal.id = 'search-modal';
+modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50';
+const modalContent = document.createElement('div');
+modalContent.className = 'bg-white rounded-lg w-[340px]';
+modalContent.innerHTML = `
+<div class="p-4 border-b">
+<div class="flex items-center justify-between">
+<h3 class="font-medium text-lg">Search</h3>
+<button id="close-search-modal" class="w-8 h-8 flex items-center justify-center">
+<i class="ri-close-line text-xl"></i>
+</button>
+</div>
+</div>
+<div class="p-4">
+<div class="mb-4 relative">
+<input type="text" id="search-input" class="w-full p-2 pl-10 border rounded-button" placeholder="Search for beats, producers...">
+<div class="absolute left-3 top-1/2 -translate-y-1/2">
+<i class="ri-search-line text-gray-400"></i>
+</div>
+</div>
+<div id="search-results" class="mb-4">
+<p class="text-center text-gray-500 py-4">Enter www.beatlab.com to search</p>
+</div>
+</div>
+`;
+modal.appendChild(modalContent);
+document.body.appendChild(modal);
+// Add event listener to close button
+document.getElementById('close-search-modal').addEventListener('click', function() {
+modal.remove();
+});
+// Add event listener to search input
+document.getElementById('search-input').addEventListener('input', function(e) {
+const searchValue = e.target.value.trim().toLowerCase();
+const searchResults = document.getElementById('search-results');
+if (searchValue === 'www.beatlab.com') {
+searchResults.innerHTML = `
+<div class="bg-gray-50 p-3 rounded-lg">
+<h4 class="font-medium mb-2">Search Results</h4>
+<div class="grid gap-3">
+<div class="flex items-center gap-3 p-2 bg-white rounded border">
+<img src="https://public.readdy.ai/ai/img_res/d0ebd72f2052b625e714ecb1dccf9bc8.jpg" class="w-10 h-10 rounded object-cover" alt="Beatlab">
+<div>
+<h5 class="font-medium">www.beatlab.com</h5>
+<p class="text-xs text-gray-500">Official Website</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-2 bg-white rounded border">
+<img src="https://public.readdy.ai/ai/img_res/724bc2ab4e89cfd5e79b56e61764be91.jpg" class="w-10 h-10 rounded object-cover" alt="Beatlab App">
+<div>
+<h5 class="font-medium">Beatlab Mobile App</h5>
+<p class="text-xs text-gray-500">Available on App Store & Google Play</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-2 bg-white rounded border">
+<img src="https://public.readdy.ai/ai/img_res/8d7136e1cb85408fde242d2d36876841.jpg" class="w-10 h-10 rounded object-cover" alt="Beatlab Community">
+<div>
+<h5 class="font-medium">Beatlab Producer Community</h5>
+<p class="text-xs text-gray-500">Join 10,000+ producers</p>
+</div>
+</div>
+</div>
+</div>
+`;
+} else if (searchValue !== '') {
+searchResults.innerHTML = `<p class="text-center text-gray-500 py-4">No results found. Try searching for "www.beatlab.com"</p>`;
+} else {
+searchResults.innerHTML = `<p class="text-center text-gray-500 py-4">Enter www.beatlab.com to search</p>`;
+}
+});
+// Close modal when clicking outside
+modal.addEventListener('click', function(e) {
+if (e.target === modal) {
+modal.remove();
+}
+});
+}
+function showBankingModal() {
+// Remove existing modal if any
+const existingModal = document.getElementById('banking-modal');
+if (existingModal) {
+existingModal.remove();
+}
+// Create modal
+const modal = document.createElement('div');
+modal.id = 'banking-modal';
+modal.className = 'fixed inset-0 bg-black/50 flex items-center justify-center z-50';
+const modalContent = document.createElement('div');
+modalContent.className = 'bg-white rounded-lg w-[340px] max-h-[80vh] overflow-y-auto';
+modalContent.innerHTML = `
+<div class="p-4 border-b">
+<div class="flex items-center justify-between">
+<h3 class="font-medium text-lg">South African Banking</h3>
+<button id="close-modal" class="w-8 h-8 flex items-center justify-center">
+<i class="ri-close-line text-xl"></i>
+</button>
+</div>
+</div>
+<div class="p-4">
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">Select Bank</label>
+<div class="relative">
+<select id="bank-select" class="w-full p-2 border rounded-button appearance-none pr-8">
+<option value="">Select your bank</option>
+${sabanks.map(bank => `<option value="${bank.id}">${bank.name} (${bank.code})</option>`).join('')}
+</select>
+<div class="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+</div>
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">Account Number</label>
+<input type="text" class="w-full p-2 border rounded-button" placeholder="Enter your account number">
+</div>
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">Account Type</label>
+<div class="relative">
+<select class="w-full p-2 border rounded-button appearance-none pr-8">
+<option value="">Select account type</option>
+<option value="current">Current Account</option>
+<option value="savings">Savings Account</option>
+<option value="credit">Credit Account</option>
+</select>
+<div class="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">
+<i class="ri-arrow-down-s-line"></i>
+</div>
+</div>
+</div>
+<div class="mb-4">
+<label class="block text-sm font-medium text-gray-700 mb-1">Reference</label>
+<input type="text" class="w-full p-2 border rounded-button" value="BL-${Math.floor(Math.random() * 10000)}" readonly>
+<p class="text-xs text-gray-500 mt-1">Use this reference when making your payment</p>
+</div>
+<div class="bg-gray-50 p-3 rounded-lg mb-4">
+<h4 class="font-medium mb-2">Beatlab Banking Details</h4>
+<div class="text-sm">
+<p class="flex justify-between mb-1">
+<span class="text-gray-600">Bank:</span>
+<span>Capitec Bank</span>
+</p>
+<p class="flex justify-between mb-1">
+<span class="text-gray-600">Account Number:</span>
+<span>2242384011</span>
+</p>
+<p class="flex justify-between mb-1">
+<span class="text-gray-600">Branch Code:</span>
+<span>470010</span>
+</p>
+<p class="flex justify-between">
+<span class="text-gray-600">Account Type:</span>
+<span>Savings Account</span>
+</p>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-3 rounded-button font-medium">Confirm Payment</button>
+</div>
+`;
+modal.appendChild(modalContent);
+document.body.appendChild(modal);
+// Add event listener to close button
+document.getElementById('close-modal').addEventListener('click', function() {
+modal.remove();
+});
+// Close modal when clicking outside
+modal.addEventListener('click', function(e) {
+if (e.target === modal) {
+modal.remove();
+}
+});
+}
+</script>
+</body>
+</html>
